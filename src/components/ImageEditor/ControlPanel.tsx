@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
-import { GrayscaleControl } from '@/components/FormElements/GreyscaleControl'
+import { GrayscaleControl } from '@/components/FormElements/GrayscaleControl'
 import { BlurControl } from '@/components/FormElements/BlurControl'
 import { SizeControl } from '@/components/FormElements/SizeControl'
 import { ImageEditorSettings } from './ImageEditor'
