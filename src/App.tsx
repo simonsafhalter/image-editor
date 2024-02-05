@@ -6,7 +6,7 @@ import { router } from './routes'
 // Create a query client
 const queryClient = new QueryClient()
 
-function App() {
+export function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <CssBaseline />
@@ -14,5 +14,3 @@ function App() {
         </QueryClientProvider>
     )
 }
-
-export default App
