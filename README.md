@@ -1,4 +1,4 @@
-# Image Editor :framed_picture:
+# :framed_picture: Image Editor
 
 Image Editor is a web application that offers an interface for browsing through a collection of images from [Picsum](https://picsum.photos/), providing features for image editing and downloading.
 
@@ -9,7 +9,7 @@ Image Editor is a web application that offers an interface for browsing through 
 -   **Image Download**: Download images.
 -   **Responsive Design**: The UI is fully responsive and works well on both desktop and mobile devices.
 
-## Tech stack :computer:
+## :computer: Tech stack
 
 -   [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [Vite](https://vitejs.dev/)
 -   [Material UI](https://mui.com/) Component Library
@@ -18,11 +18,11 @@ Image Editor is a web application that offers an interface for browsing through 
 -   [Cypress](https://www.cypress.io/) for E2E testing
 -   [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) for code style
 
-## Prerequisites :page_facing_up:
+## :page_facing_up: Prerequisites
 
 Check the `engines` property in [package.json](package.json) for the suggested Node.js and npm versions.
 
-## Installation :hammer_and_wrench:
+## :hammer_and_wrench: Installation
 
 To get started with the project install the dependencies:
 
@@ -39,7 +39,7 @@ npm start
 The application should be available at http://localhost:5173
 Alternatively check the terminal output to see the url of the app.
 
-## Testing :hammer:
+## :hammer: Testing
 
 This project uses Vitest for unit testing. Run the following command to execute the tests:
 
@@ -53,7 +53,7 @@ This project uses Cypress for E2E testing. Run the following command to execute 
 npm run cypress:open
 ```
 
-## Building :building_construction:
+## :building_construction: Building
 
 Run the next command to build the app:
 
