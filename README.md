@@ -4,14 +4,14 @@ Image Editor is a web application that offers an interface for browsing through 
 
 ## Features :joystick:
 
--   **Image Gallery**: Browser through a list of images in a gallery format.
+-   **Image Gallery**: Browse through a list of images in a gallery format.
 -   **Image Editor**: Edit the selected image by applying various effects.
--   **Image Download**: Download images from the Image Editor.
+-   **Image Download**: Download images.
 -   **Responsive Design**: The UI is fully responsive and works well on both desktop and mobile devices.
 
 ## Tech stack :computer:
 
--   [React](https://react.dev/) + TypeScript + [Vite](https://vitejs.dev/)
+-   [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) + [Vite](https://vitejs.dev/)
 -   [Material UI](https://mui.com/) Component Library
 -   [Emotion](https://emotion.sh/docs/styled) Styled Components
 -   [Vitest](https://vitest.dev/) for unit testing
@@ -61,14 +61,14 @@ Run the next command to build the app:
 npm run build
 ```
 
-By default, the build output will be placed at `dist``. You may deploy this dist folder to any of your preferred platforms.
+By default, the build output will be placed in the `dist` folder.
 
 ### Testing the build locally
 
-Once you've built the app, you may test it locally by running:
+Once you've built the app, you can test it locally by running:
 
 ```
 npm run preview
 ```
 
-The Vite preview command will boot up a local static web server that serves the files from dist at http://localhost:4173. It's an easy way to check if the production build looks OK in your local environment.
+The Vite preview command will boot up a local static web server that serves the files from dist at http://localhost:4173.
