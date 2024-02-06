@@ -1,17 +1,17 @@
 describe('Image Editor', () => {
-    it('Browse, select, edit and download an image', () => {
+    it('Smoke test: browse, select, edit and download an image', () => {
         cy.visit('/')
 
         // Click the next page button
-        cy.get('button[aria-label="Next Page"]').click()
+        cy.get('[data-cy="Next Page"]').click()
 
-        // Click on the 2nd element in the image list
-        cy.get('ul>li').eq(2).click()
+        // Click on the 3rd element in the image list
+        cy.get('[data-cy="Image List"] > li').eq(2).click()
 
         // Edit the image to grayscale
-        cy.get('input[type="checkbox"]').click()
+        cy.get('[data-cy="Grayscale Control"]').click()
 
         // Download the image
-        cy.contains('button', 'Download image').click()
+        cy.get('[data-cy="Download Image"]').click()
     })
 })

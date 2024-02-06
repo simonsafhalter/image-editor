@@ -1,4 +1,4 @@
-import { Slider } from '@mui/material'
+import { FormLabel, Slider } from '@mui/material'
 import styled from '@emotion/styled'
 
 // Styles
@@ -7,8 +7,8 @@ const Container = styled.div`
     align-items: center;
 `
 
-const Label = styled.div`
-    margin-right: 10px;
+const Label = styled(FormLabel)`
+    padding-right: 20px;
 `
 
 // Types

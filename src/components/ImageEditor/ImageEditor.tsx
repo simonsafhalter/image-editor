@@ -4,13 +4,13 @@ import Paper from '@mui/material/Paper'
 import styled from '@emotion/styled'
 import { useStoredState } from '@/hooks/useStoredState'
 import { setInStorage } from '@/utils/storage'
-import { ImageDownloader } from './ImageDownloader'
+import { ImageDownloadButton } from './ImageDownloadButton'
 import { ImagePreview } from './ImagePreview'
 import { ControlPanel } from './ControlPanel'
 
 // Constants
-const DEBOUNCE_VALUE = 500 // Debounce value between image edit operations
-const EDITOR_DEFAULT_SETTINGS = {
+const DEBOUNCE_VALUE: number = 500 // Debounce value between image edit operations
+const EDITOR_DEFAULT_SETTINGS: ImageEditorSettings = {
     grayscale: false,
     blur: 1,
     height: 200,
@@ -84,7 +84,7 @@ export function ImageEditor({ imageId }: ImageEditorProps) {
                         settings={settings}
                         onSettingsChange={handleSettingsChange}
                     />
-                    <ImageDownloader
+                    <ImageDownloadButton
                         downloadUrl={imageUrl}
                         imageName={imageId}
                     />

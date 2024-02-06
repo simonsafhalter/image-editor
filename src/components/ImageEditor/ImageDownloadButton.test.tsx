@@ -1,39 +1,48 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, act, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { ImageDownloader } from './ImageDownloader'
+import { ImageDownloadButton } from './ImageDownloadButton'
 
-// Mock the downloadImage utility
+// Mocks
+const downloadUrl = 'https://example.com/image.jpg'
+const imageName = 'test-image.jpg'
+
 vi.mock('@/utils/download', () => ({
     downloadImage: vi.fn(() => Promise.resolve()),
 }))
 
-describe('ImageDownloader', () => {
-    const downloadUrl = 'https://example.com/image.jpg'
-    const imageName = 'test-image.jpg'
-
+describe('ImageDownloadButton', () => {
     beforeEach(() => {
-        // Clear all mocks before each test
         vi.clearAllMocks()
     })
 
     it('renders the download button', () => {
+        // Act
         render(
-            <ImageDownloader downloadUrl={downloadUrl} imageName={imageName} />
+            <ImageDownloadButton
+                downloadUrl={downloadUrl}
+                imageName={imageName}
+            />
         )
+
+        // Assert
         expect(
             screen.getByRole('button', { name: /download image/i })
         ).toBeInTheDocument()
     })
 
     it('shows loading indicator when the download is in progress', async () => {
+        // Act
         render(
-            <ImageDownloader downloadUrl={downloadUrl} imageName={imageName} />
+            <ImageDownloadButton
+                downloadUrl={downloadUrl}
+                imageName={imageName}
+            />
         )
         const button = screen.getByRole('button', { name: /download image/i })
-
         await fireEvent.click(button)
 
+        // Assert
         expect(
             screen.queryByRole('button', { name: /download image/i })
         ).not.toBeInTheDocument()
@@ -41,16 +50,20 @@ describe('ImageDownloader', () => {
     })
 
     it('hides the loading indicator after the download completes', async () => {
+        // Act
         render(
-            <ImageDownloader downloadUrl={downloadUrl} imageName={imageName} />
+            <ImageDownloadButton
+                downloadUrl={downloadUrl}
+                imageName={imageName}
+            />
         )
         const button = screen.getByRole('button', { name: /download image/i })
-
         // Wrap in act for the "downloadImage" mock promise to resolve
         await act(async () => {
             await fireEvent.click(button)
         })
 
+        // Assert
         expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
         expect(
             screen.getByRole('button', { name: /download image/i })

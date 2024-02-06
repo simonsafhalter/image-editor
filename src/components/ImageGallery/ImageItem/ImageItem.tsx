@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { ImageListItemBar } from '@mui/material'
-import SyncIcon from '@mui/icons-material/Sync'
+import { CircularProgress, ImageListItemBar } from '@mui/material'
+import { getImageUrl } from '@/api/getImageUrl'
 
 // Constants
-const IMAGE_WIDTH = 200
+const IMAGE_SIZE: string = '200' // Image width and height (square) for the gallery
 
 // Types
 type ImageItemProps = {
@@ -12,7 +12,7 @@ type ImageItemProps = {
 }
 
 /**
- * Displays an image from a specified source along with the image's author.
+ * Displays an image from Picsum for the provided ID along with the image's author.
  * It initially shows a loading icon until the image has fully loaded.
  *
  * @param {number} props.id - The unique identifier for the image.
@@ -27,9 +27,9 @@ export function ImageItem({ id, author }: ImageItemProps) {
 
     return (
         <>
-            {isLoading && <SyncIcon />}
+            {isLoading && <CircularProgress />}
             <img
-                src={`https://picsum.photos/id/${id}/${IMAGE_WIDTH}`}
+                src={getImageUrl(id, IMAGE_SIZE)}
                 width="100%"
                 alt="image"
                 loading="lazy"

@@ -3,6 +3,7 @@ import { renderHook, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { useImageList } from './getImageList'
 
+// Mocks
 vi.mock('@/utils/parse', () => ({
     parseHeaderLinks: vi
         .fn()
@@ -21,6 +22,7 @@ vi.stubGlobal(
 
 describe('useImageList', () => {
     it('uses useQuery to fetch images and parse headers', async () => {
+        // Arrange
         const queryClient = new QueryClient()
         const wrapper = ({ children }) => (
             <QueryClientProvider client={queryClient}>
@@ -28,10 +30,11 @@ describe('useImageList', () => {
             </QueryClientProvider>
         )
 
+        // Act
         const { result } = renderHook(() => useImageList('1'), { wrapper })
-
         await waitFor(() => expect(result.current.isSuccess).toBe(true))
 
+        // Assert
         expect(result.current.data).toEqual({
             images: [{ id: 1 }],
             links: { next: 'nextPageUrl', prev: 'prevPageUrl' },

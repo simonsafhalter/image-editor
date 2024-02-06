@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import { downloadImage } from '@/utils/download'
 
 // Types
-type ImageDownloaderProps = {
+type ImageDownloadButtonProps = {
     downloadUrl: string
     imageName: string
 }
@@ -18,10 +18,10 @@ type ImageDownloaderProps = {
  * @param {string} imageUrl - The URL of the image to be downloaded.
  * @returns {JSX.Element} A React component that renders a button for downloading an image and a progress indicator.
  */
-export function ImageDownloader({
+export function ImageDownloadButton({
     downloadUrl,
     imageName,
-}: ImageDownloaderProps) {
+}: ImageDownloadButtonProps) {
     const [isDownloading, setIsDownloading] = useState(false)
 
     const handleDownload = async () => {
@@ -35,7 +35,11 @@ export function ImageDownloader({
     }
 
     return (
-        <Button variant="contained" onClick={handleDownload}>
+        <Button
+            variant="contained"
+            data-cy="Download Image"
+            onClick={handleDownload}
+        >
             Download image
         </Button>
     )

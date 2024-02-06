@@ -29,6 +29,7 @@ describe('ImageGallery', () => {
     })
 
     it('renders the images correctly', () => {
+        // Arrange
         const images = [
             { id: '1', author: 'Author 1' },
             { id: '2', author: 'Author 2' },
@@ -51,10 +52,10 @@ describe('ImageGallery', () => {
     })
 
     it('triggers handlePageChange and sets the URL params correctly', async () => {
+        // Arrange
         const initialPage = '2'
         const setSearchParams = vi.fn()
 
-        // Mock `useSearchParams` to return a controlled search params and a mock setSearchParams function
         vi.spyOn(ReactRouter, 'useSearchParams').mockReturnValue([
             new URLSearchParams({ page: initialPage }),
             setSearchParams,
@@ -66,16 +67,16 @@ describe('ImageGallery', () => {
             prev: 'http://example.com/gallery?page=1',
         }
 
+        // Act
         render(
             <MemoryRouter initialEntries={[`/gallery?page=${initialPage}`]}>
                 <ImageGallery images={images} links={links} />
             </MemoryRouter>
         )
-
         const nextPageButton = screen.getByTestId('mock-pagination')
         nextPageButton.click()
 
-        // Assert that setSearchParams was called with the expected new page parameter
+        // Assert
         expect(setSearchParams).toHaveBeenCalledWith(
             expect.objectContaining({ page: '3' })
         )

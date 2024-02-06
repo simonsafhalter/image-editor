@@ -4,6 +4,7 @@ import { getFromStorage, setInStorage } from './storage'
 
 describe('Utils: storage', () => {
     beforeEach(() => {
+        // Mock sessionStorage
         const storageMock = {
             getItem: vi.fn(),
             setItem: vi.fn(),
@@ -11,7 +12,6 @@ describe('Utils: storage', () => {
         vi.spyOn(storageMock, 'getItem')
         vi.spyOn(storageMock, 'setItem')
 
-        // Replace window's localStorage with the mock
         Object.defineProperty(window, 'sessionStorage', {
             value: storageMock,
         })
@@ -23,8 +23,10 @@ describe('Utils: storage', () => {
 
     describe('setInStorage', () => {
         it('stores a value correctly', () => {
+            // Act
             setInStorage('testKey', { a: 1 })
 
+            // Assert
             expect(window.sessionStorage.setItem).toHaveBeenCalledWith(
                 'testKey',
                 JSON.stringify({ a: 1 })
@@ -34,8 +36,10 @@ describe('Utils: storage', () => {
 
     describe('getFromStorage', () => {
         it('retrieves a stored value correctly', () => {
+            // Act
             getFromStorage('testKey')
 
+            // Assert
             expect(window.sessionStorage.getItem).toHaveBeenCalledWith(
                 'testKey'
             )

@@ -21,7 +21,7 @@ export function ImageGallery({ images, links }: ImageListResponse) {
     return (
         <Container>
             <Pagination links={links} onPageChange={handlePageChange} />
-            <ImageList cols={6}>
+            <ImageList cols={6} data-cy="Image List">
                 {images?.map((image) => (
                     <ImageListItem key={image.id}>
                         <Link to={`/image-editor?imageId=${image.id}`}>

@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material'
 
 // Constants
-const MAX_SIZE = 5000 // Picsum API can offer a maximum size of 5000.
+const MAX_SIZE: number = 5000 // Picsum API can offer a maximum size of 5000.
 
 // Types
 type SizeControlProps = {

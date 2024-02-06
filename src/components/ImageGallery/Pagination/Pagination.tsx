@@ -27,6 +27,7 @@ export function Pagination({ links, onPageChange }: PaginationProps) {
         <ButtonGroup variant="contained">
             <Button
                 aria-label="Previous Page"
+                data-cy="Previous Page"
                 disabled={!links?.prev}
                 onClick={() => onPageChange(links.prev!)}
             >
@@ -34,6 +35,7 @@ export function Pagination({ links, onPageChange }: PaginationProps) {
             </Button>
             <Button
                 aria-label="Next Page"
+                data-cy="Next Page"
                 disabled={!links?.next}
                 onClick={() => onPageChange(links.next!)}
             >

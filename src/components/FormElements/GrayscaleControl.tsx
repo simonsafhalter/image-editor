@@ -1,4 +1,4 @@
-import { Switch } from '@mui/material'
+import { FormLabel, Switch } from '@mui/material'
 import styled from '@emotion/styled'
 
 // Styles
@@ -28,8 +28,9 @@ export function GrayscaleControl({
 }: GrayscaleControlProps) {
     return (
         <Container>
-            <div>Grayscale</div>
+            <FormLabel>Grayscale</FormLabel>
             <Switch
+                data-cy="Grayscale Control"
                 checked={grayscale}
                 onChange={(e) => onGrayscaleChange(e.target.checked)}
             />

@@ -22,7 +22,7 @@ vi.mock('@/components/FormElements/SizeControl', () => ({
 
 describe('ControlPanel', () => {
     it('render controls', async () => {
-        // Initial settings
+        // Arrange
         const initialSettings = {
             grayscale: false,
             blur: 0,
@@ -30,7 +30,7 @@ describe('ControlPanel', () => {
             width: 100,
         }
 
-        //
+        // Act
         render(
             <ControlPanel
                 settings={initialSettings}
@@ -38,7 +38,7 @@ describe('ControlPanel', () => {
             />
         )
 
-        // Verify rendering
+        // Assert
         expect(screen.getByTestId('grayscale-control')).toHaveTextContent(
             'Grayscale'
         )

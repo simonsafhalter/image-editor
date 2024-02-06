@@ -3,14 +3,17 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { BlurControl } from './BlurControl'
 
+// Mocks
+const blurValue = 5
+const onBlurChange = vi.fn()
+
 describe('BlurControl', () => {
-    const blurValue = 5
-    const onBlurChange = vi.fn()
-
     it('renders correctly with initial blur value', () => {
+        // Act
         render(<BlurControl blur={blurValue} onBlurChange={onBlurChange} />)
+        const slider = screen.getByRole('slider')
 
-        const slider = screen.getByRole('slider', { name: 'Blur' })
+        // Assert
         expect(slider).toBeInTheDocument()
         expect(slider).toHaveValue(String(blurValue))
     })

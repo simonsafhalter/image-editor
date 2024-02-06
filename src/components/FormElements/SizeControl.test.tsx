@@ -3,16 +3,18 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { SizeControl } from './SizeControl' // Adjust the import path to match your project structure
 
-describe('SizeControl', () => {
-    const testLabel = 'Size'
-    const initialValue = 100
-    const onSizeChange = vi.fn()
+// Mocks
+const testLabel = 'Size'
+const initialValue = 100
+const onSizeChange = vi.fn()
 
+describe('SizeControl', () => {
     beforeEach(() => {
         vi.clearAllMocks()
     })
 
     it('renders with correct label and value', () => {
+        // Act
         render(
             <SizeControl
                 label={testLabel}
@@ -21,11 +23,13 @@ describe('SizeControl', () => {
             />
         )
 
+        // Assert
         expect(screen.getByLabelText(testLabel)).toBeInTheDocument()
         expect(screen.getByLabelText(testLabel)).toHaveValue(initialValue)
     })
 
     it('calls onSizeChange with the new value when changed', () => {
+        // Act
         render(
             <SizeControl
                 label={testLabel}
@@ -34,13 +38,14 @@ describe('SizeControl', () => {
             />
         )
         const input = screen.getByLabelText(testLabel)
-
         fireEvent.change(input, { target: { value: 300 } })
 
+        // Assert
         expect(onSizeChange).toHaveBeenCalledWith(300)
     })
 
     it('corrects the value to the maximum size (5000) if the entered value exceeds the maximum', () => {
+        // Act
         render(
             <SizeControl
                 label={testLabel}
@@ -49,9 +54,9 @@ describe('SizeControl', () => {
             />
         )
         const input = screen.getByLabelText(testLabel)
+        fireEvent.change(input, { target: { value: 5001 } }) // Enter a value greater than MAX_SIZE (5000)
 
-        fireEvent.change(input, { target: { value: 5001 } }) // Enter a value greater than MAX_SIZE
-
+        // Assert
         expect(onSizeChange).toHaveBeenCalledWith(5000) // Expect the callback to be called with MAX_SIZE
     })
 })

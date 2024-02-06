@@ -28,7 +28,7 @@ export function ImagePreview({ imageUrl }: ImagePreviewProps) {
     const [isEditing, setIsEditing] = useState(true)
 
     // Note: img.onLoad doesn't fire if the image is loaded from cache because it's already loaded.
-    // We can fix this by manually setting the "src" property. It still gets the image from the cache and fires onLoad.
+    // Workaround by manually setting the "src" property. It still gets the image from the cache and fires onLoad.
     useEffect(() => {
         setIsEditing(true)
         const image = document.getElementById(

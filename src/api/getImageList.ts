@@ -2,8 +2,10 @@ import { UseQueryResult, useQuery } from '@tanstack/react-query'
 import { parseHeaderLinks } from '@/utils/parse'
 
 // Constants
-const BASE_URL = 'https://picsum.photos/v2/list'
-const PAGE_ITEMS = 18
+const PAGE_ITEMS: number = 18
+const URL = (pageNumber: string) => {
+    return `https://picsum.photos/v2/list?page=${pageNumber}&limit=${PAGE_ITEMS}`
+}
 
 // Types
 type ImageData = {
@@ -30,7 +32,7 @@ export type ImageListResponse = {
 export function useImageList(
     pageNumber: string
 ): UseQueryResult<ImageListResponse> {
-    const url = `${BASE_URL}?page=${pageNumber}&limit=${PAGE_ITEMS}`
+    const url = URL(pageNumber)
 
     return useQuery({
         queryKey: ['images', url],

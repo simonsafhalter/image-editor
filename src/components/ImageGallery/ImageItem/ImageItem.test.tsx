@@ -6,41 +6,47 @@ import { ImageItem } from './ImageItem'
 
 describe('ImageItem', () => {
     it('should display loading icon initially and hide it after image loads', async () => {
+        // Act
         render(
             <MemoryRouter>
                 <ImageItem id="1" author="Author Name" />
             </MemoryRouter>
         )
 
-        // Check that the loading icon is initially displayed
-        expect(screen.getByTestId('SyncIcon')).toBeInTheDocument()
+        // Assert
+        expect(screen.getByRole('progressbar')).toBeInTheDocument()
 
-        // Simulate image load
+        // Act
         fireEvent.load(screen.getByAltText('image'))
 
-        // Check that the loading icon is no longer displayed
+        // Assert
         expect(screen.queryByTestId('SyncIcon')).not.toBeInTheDocument()
     })
 
     it('should display the correct author name', () => {
+        // Act
         render(
             <MemoryRouter>
                 <ImageItem id="1" author="Author Name" />
             </MemoryRouter>
         )
 
+        // Assert
         expect(screen.getByText('Author Name')).toBeInTheDocument()
     })
 
     it('should set the correct ID for the image source and link to the editor', () => {
-        const { getByRole } = render(
+        // Act
+        render(
             <MemoryRouter>
                 <ImageItem id="12" author="Author Name" />
             </MemoryRouter>
         )
 
-        const image = getByRole('img')
-
-        expect(image).toHaveAttribute('src', 'https://picsum.photos/id/12/200')
+        // Assert
+        expect(screen.getByRole('img')).toHaveAttribute(
+            'src',
+            'https://picsum.photos/id/12/200'
+        )
     })
 })
