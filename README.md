@@ -2,11 +2,11 @@
 
 Image Editor is a web application that offers an interface for browsing through a collection of images from [Picsum](https://picsum.photos/), providing features for image editing and downloading.
 
-## Features :joystick:
+## :joystick: Features
 
 -   **Image Gallery**: Browse through a list of images in a gallery format.
 -   **Image Editor**: Edit the selected image by applying various effects.
--   **Image Download**: Download images.
+-   **Image Download**: Download editer images.
 -   **Responsive Design**: The UI is fully responsive and works well on both desktop and mobile devices.
 
 ## :computer: Tech stack
