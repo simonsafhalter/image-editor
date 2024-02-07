@@ -1,5 +1,5 @@
-import { renderHook } from '@testing-library/react'
 import { describe, it, expect, vi, afterEach } from 'vitest'
+import { renderHook } from '@testing-library/react'
 import * as storage from '@/utils/storage'
 import { useStoredState } from './useStoredState'
 

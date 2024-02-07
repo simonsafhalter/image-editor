@@ -1,7 +1,7 @@
-import { describe, it, expect, vi } from 'vitest'
-import { ImageEditor } from './ImageEditor' // Adjust the import path
 import '@testing-library/jest-dom'
+import { describe, it, expect, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
+import { ImageEditor } from './ImageEditor'
 
 describe('ImageEditor', () => {
     beforeEach(() => {

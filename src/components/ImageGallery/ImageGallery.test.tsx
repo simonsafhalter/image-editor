@@ -1,7 +1,7 @@
+import '@testing-library/jest-dom'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { MemoryRouter } from 'react-router-dom'
 import * as ReactRouter from 'react-router-dom'
-import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { ImageGallery } from './ImageGallery'
 

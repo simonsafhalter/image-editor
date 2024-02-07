@@ -1,7 +1,7 @@
+import '@testing-library/jest-dom'
 import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import { SizeControl } from './SizeControl' // Adjust the import path to match your project structure
+import { SizeControl } from './SizeControl'
 
 // Mocks
 const testLabel = 'Size'

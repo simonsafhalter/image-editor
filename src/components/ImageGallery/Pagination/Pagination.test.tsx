@@ -1,6 +1,6 @@
+import '@testing-library/jest-dom'
 import { describe, it, expect, vi } from 'vitest'
 import { render, fireEvent, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
 import { Pagination } from './Pagination'
 
 // Mocks

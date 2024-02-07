@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import * as ReactRouter from 'react-router-dom'
+import { render, screen } from '@testing-library/react'
 import * as getImageList from '@/api/getImageList'
 import { ImageGalleryPage } from './ImageGalleryPage'
 

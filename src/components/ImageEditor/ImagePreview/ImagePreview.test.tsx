@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom'
-import { describe, it, expect, vi } from 'vitest'
-import { render, screen, act } from '@testing-library/react'
+import { describe, it, expect } from 'vitest'
+import { render, screen } from '@testing-library/react'
 import { ImagePreview } from './ImagePreview'
 
 describe('ImagePreview', () => {
@@ -16,7 +16,7 @@ describe('ImagePreview', () => {
         // Act
         render(<ImagePreview imageUrl="test-image-url.jpg" />)
 
-        screen.getByAltText('Image preview').onload?.()
+        screen.getByAltText('Image preview').onload?.({} as Event)
 
         // Assert
         expect(screen.queryByText('Loading...')).not.toBeInTheDocument()

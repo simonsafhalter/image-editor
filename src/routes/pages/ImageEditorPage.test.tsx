@@ -2,9 +2,9 @@ import '@testing-library/jest-dom'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import { ImageEditorPage } from './ImageEditorPage'
 import * as ReactRouter from 'react-router-dom'
 import * as getImageDetails from '@/api/getImageDetails'
+import { ImageEditorPage } from './ImageEditorPage'
 
 describe('ImageEditorPage', () => {
     beforeEach(() => {
