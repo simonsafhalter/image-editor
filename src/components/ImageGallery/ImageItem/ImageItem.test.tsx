@@ -17,7 +17,7 @@ describe('ImageItem', () => {
         expect(screen.getByRole('progressbar')).toBeInTheDocument()
 
         // Act
-        fireEvent.load(screen.getByAltText('image'))
+        fireEvent.load(screen.getByAltText('Image 1 from Author Name'))
 
         // Assert
         expect(screen.queryByTestId('SyncIcon')).not.toBeInTheDocument()
