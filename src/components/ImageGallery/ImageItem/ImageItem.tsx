@@ -31,7 +31,7 @@ export function ImageItem({ id, author }: ImageItemProps) {
             <img
                 src={getImageUrlForGallery(id, IMAGE_SIZE)}
                 width="100%"
-                alt="image"
+                alt={`Image ${id} from ${author}`}
                 loading="lazy"
                 onLoad={() => setIsLoading(false)}
             ></img>

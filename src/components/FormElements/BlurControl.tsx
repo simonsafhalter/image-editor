@@ -29,7 +29,6 @@ export function BlurControl({ blur, onBlurChange }: BlurControlProps) {
         <Container>
             <Label>Blur</Label>
             <Slider
-                aria-label="Blur"
                 valueLabelDisplay="auto"
                 step={1}
                 marks
