@@ -13,6 +13,10 @@ const SizeContainer = styled.div`
     margin: 20px;
 `
 
+const Label = styled.div`
+    margin-bottom: 20px;
+`
+
 type ControlPanelProps = {
     settings: ImageEditorSettings
     onSettingsChange: React.Dispatch<ImageEditorSettings>
@@ -45,16 +49,17 @@ export function ControlPanel({
             <BlurControl blur={blur} onBlurChange={setBlur} />
             <SizeContainer>
                 <SizeControl
-                    label="Height"
-                    value={height}
-                    onSizeChange={setHeight}
-                />
-                <SizeControl
                     label="Width"
                     value={width}
                     onSizeChange={setWidth}
                 />
+                <SizeControl
+                    label="Height"
+                    value={height}
+                    onSizeChange={setHeight}
+                />
             </SizeContainer>
+            <Label>The maximum width or height for the images is 5000px</Label>
         </>
     )
 }
