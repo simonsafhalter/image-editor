@@ -13,7 +13,7 @@ describe('ImageEditor', () => {
             setInStorage: vi.fn(),
         }))
 
-        vi.mock('./ImagePreview', () => ({
+        vi.mock('./ImagePreview/ImagePreview', () => ({
             ImagePreview: vi.fn(({ settings, onSettingsChange }) => (
                 <div
                     data-testid="image-preview"
@@ -24,13 +24,13 @@ describe('ImageEditor', () => {
             )),
         }))
 
-        vi.mock('./ControlPanel', () => ({
+        vi.mock('./ControlPanel/ControlPanel', () => ({
             ControlPanel: vi.fn(() => (
                 <div data-testid="control-panel">ControlPanel Mock</div>
             )),
         }))
 
-        vi.mock('./ImageDownloadButton', () => ({
+        vi.mock('./ImageDownloadButton/ImageDownloadButton', () => ({
             ImageDownloadButton: vi.fn(() => (
                 <div data-testid="image-downloader">
                     ImageDownloadButton Mock

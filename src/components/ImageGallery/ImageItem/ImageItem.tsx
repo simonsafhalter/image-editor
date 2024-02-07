@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { CircularProgress, ImageListItemBar } from '@mui/material'
-import { getImageUrl } from '@/api/getImageUrl'
+import { getImageUrlForGallery } from '@/api/getImageUrl'
 
 // Constants
 const IMAGE_SIZE: string = '200' // Image width and height (square) for the gallery
@@ -29,7 +29,7 @@ export function ImageItem({ id, author }: ImageItemProps) {
         <>
             {isLoading && <CircularProgress />}
             <img
-                src={getImageUrl(id, IMAGE_SIZE)}
+                src={getImageUrlForGallery(id, IMAGE_SIZE)}
                 width="100%"
                 alt="image"
                 loading="lazy"

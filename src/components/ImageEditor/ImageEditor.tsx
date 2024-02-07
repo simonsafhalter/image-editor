@@ -4,9 +4,10 @@ import Paper from '@mui/material/Paper'
 import styled from '@emotion/styled'
 import { useStoredState } from '@/hooks/useStoredState'
 import { setInStorage } from '@/utils/storage'
-import { ImageDownloadButton } from './ImageDownloadButton'
-import { ImagePreview } from './ImagePreview'
-import { ControlPanel } from './ControlPanel'
+import { getImageUrlForEditor } from '@/api/getImageUrl'
+import { ImageDownloadButton } from './ImageDownloadButton/ImageDownloadButton'
+import { ImagePreview } from './ImagePreview/ImagePreview'
+import { ControlPanel } from './ControlPanel/ControlPanel'
 
 // Constants
 const DEBOUNCE_VALUE: number = 500 // Debounce value between image edit operations
@@ -63,9 +64,7 @@ export function ImageEditor({ imageId }: ImageEditorProps) {
         // Debounce so it's not saving to storage and requesting a new image too quickly
         const debounce = setTimeout(() => {
             setInStorage(storageKey, settings)
-            setImageUrl(
-                `https://picsum.photos/id/${imageId}/${settings.width}/${settings.height}?${settings.grayscale ? 'grayscale&' : ''}blur=${settings.blur}`
-            )
+            setImageUrl(getImageUrlForEditor(imageId, settings))
         }, DEBOUNCE_VALUE)
 
         // Clear timeout if the effect re-runs

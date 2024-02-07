@@ -11,8 +11,6 @@ import { ImageGallery } from '@/components/ImageGallery/ImageGallery'
  */
 export function ImageGalleryPage() {
     const [searchParams] = useSearchParams()
-
-    // Get the page number from the URL parameters
     const pageNumber = searchParams.get('page') || '1'
 
     // Get the images

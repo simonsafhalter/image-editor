@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import { GrayscaleControl } from '@/components/FormElements/GrayscaleControl'
 import { BlurControl } from '@/components/FormElements/BlurControl'
 import { SizeControl } from '@/components/FormElements/SizeControl'
-import { ImageEditorSettings } from './ImageEditor'
+import { ImageEditorSettings } from '../ImageEditor'
 
 // Styles
 const SizeContainer = styled.div`
