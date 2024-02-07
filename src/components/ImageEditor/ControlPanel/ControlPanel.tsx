@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import styled from '@emotion/styled'
 import { GrayscaleControl } from '@/components/FormElements/GrayscaleControl'
 import { BlurControl } from '@/components/FormElements/BlurControl'
@@ -23,41 +23,45 @@ type ControlPanelProps = {
     onSettingsChange: React.Dispatch<ImageEditorSettings>
 }
 
+type SettingsValue = boolean | number
+
 export function ControlPanel({
     settings,
     onSettingsChange,
 }: ControlPanelProps) {
-    const [grayscale, setGrayscale] = useState(settings.grayscale)
-    const [blur, setBlur] = useState(settings.blur)
-    const [height, setHeight] = useState(settings.height)
-    const [width, setWidth] = useState(settings.width)
+    const [localSettings, setLocalSettings] = useState(settings)
 
-    useEffect(() => {
-        onSettingsChange({
-            grayscale,
-            blur,
-            height,
-            width,
-        })
-    }, [grayscale, blur, height, width])
+    // Update any part of the settings and notify parent
+    const handleSettingChange =
+        (settingName: string) => (newValue: SettingsValue) => {
+            const updatedSettings = {
+                ...localSettings,
+                [settingName]: newValue,
+            }
+            setLocalSettings(updatedSettings)
+            onSettingsChange(updatedSettings)
+        }
 
     return (
         <>
             <GrayscaleControl
-                grayscale={grayscale}
-                onGrayscaleChange={setGrayscale}
+                grayscale={localSettings.grayscale}
+                onGrayscaleChange={handleSettingChange('grayscale')}
             />
-            <BlurControl blur={blur} onBlurChange={setBlur} />
+            <BlurControl
+                blur={localSettings.blur}
+                onBlurChange={handleSettingChange('blur')}
+            />
             <SizeContainer>
                 <SizeControl
                     label="Width"
-                    value={width}
-                    onSizeChange={setWidth}
+                    value={localSettings.width}
+                    onSizeChange={handleSettingChange('width')}
                 />
                 <SizeControl
                     label="Height"
-                    value={height}
-                    onSizeChange={setHeight}
+                    value={localSettings.height}
+                    onSizeChange={handleSettingChange('height')}
                 />
             </SizeContainer>
             <Label>The maximum width or height for the images is 5000px</Label>

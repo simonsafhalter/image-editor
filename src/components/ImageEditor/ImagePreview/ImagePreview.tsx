@@ -27,14 +27,8 @@ type ImagePreviewProps = {
 export function ImagePreview({ imageUrl }: ImagePreviewProps) {
     const [isEditing, setIsEditing] = useState(true)
 
-    // Note: img.onLoad doesn't fire if the image is loaded from cache because it's already loaded.
-    // Workaround by manually setting the "src" property. It still gets the image from the cache and fires onLoad.
     useEffect(() => {
         setIsEditing(true)
-        const image = document.getElementById(
-            'image-element'
-        ) as HTMLImageElement
-        image.src = imageUrl
     }, [imageUrl])
 
     return (
@@ -43,6 +37,8 @@ export function ImagePreview({ imageUrl }: ImagePreviewProps) {
             {isEditing && <CircularProgress />}
             <ImageContainer>
                 <StyledImage
+                    key={imageUrl} // Forces to re-render because onLoad doesn't fire for a cached image (https://stackoverflow.com/questions/67969732/onload-doesnt-fire-on-cached-images)
+                    src={imageUrl}
                     id="image-element"
                     onLoad={() => setIsEditing(false)}
                     hidden={isEditing}

@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useCallback } from 'react'
 import { Grid } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import styled from '@emotion/styled'
+import { useDebouncedCallback } from 'use-debounce'
 import { useStoredState } from '@/hooks/useStoredState'
 import { setInStorage } from '@/utils/storage'
 import { getImageUrlForEditor } from '@/api/getImageUrl'
@@ -10,7 +11,7 @@ import { ImagePreview } from './ImagePreview/ImagePreview'
 import { ControlPanel } from './ControlPanel/ControlPanel'
 
 // Constants
-const DEBOUNCE_VALUE: number = 500 // Debounce value between image edit operations
+const DEBOUNCE_TIME_MS: number = 500 // Debounce time between image edit operations
 const EDITOR_DEFAULT_SETTINGS: ImageEditorSettings = {
     grayscale: false,
     blur: 1,
@@ -50,23 +51,23 @@ export function ImageEditor({ imageId }: ImageEditorProps) {
     )
     const [imageUrl, setImageUrl] = useState('')
 
-    function handleSettingsChange(newSettings: ImageEditorSettings) {
-        setSettings((previousSettings: ImageEditorSettings) => {
-            return { ...previousSettings, ...newSettings }
-        })
-    }
+    // Debounce logic so it's not saving to storage and requesting a new image too quickly
+    const debouncedUpdate = useDebouncedCallback(() => {
+        setInStorage(storageKey, settings)
+        setImageUrl(getImageUrlForEditor(imageId, settings))
+    }, DEBOUNCE_TIME_MS)
 
-    // Update when settings change
-    useEffect(() => {
-        // Debounce so it's not saving to storage and requesting a new image too quickly
-        const debounce = setTimeout(() => {
-            setInStorage(storageKey, settings)
-            setImageUrl(getImageUrlForEditor(imageId, settings))
-        }, DEBOUNCE_VALUE)
+    const handleSettingsChange = useCallback(
+        (newSettings: ImageEditorSettings) => {
+            setSettings((previousSettings: ImageEditorSettings) => {
+                return { ...previousSettings, ...newSettings }
+            })
+            debouncedUpdate()
+        },
+        [setSettings, debouncedUpdate]
+    )
 
-        // Clear timeout if the effect re-runs
-        return () => clearTimeout(debounce)
-    }, [settings])
+    debouncedUpdate()
 
     return (
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2 }}>
