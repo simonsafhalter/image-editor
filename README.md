@@ -1,4 +1,4 @@
-# :framed_picture: Image Editor
+# Image Editor
 
 Image Editor is a web application that offers an interface for browsing through a collection of images from [Picsum](https://picsum.photos/), providing features for image editing and downloading.
 
