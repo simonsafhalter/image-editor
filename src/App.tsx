@@ -10,7 +10,7 @@ export function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <CssBaseline />
-            <RouterProvider router={router}></RouterProvider>
+            <RouterProvider router={router} />
         </QueryClientProvider>
     )
 }

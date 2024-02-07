@@ -34,7 +34,7 @@ export function ImageItem({ id, author }: ImageItemProps) {
                 alt={`Image ${id} from ${author}`}
                 loading="lazy"
                 onLoad={() => setIsLoading(false)}
-            ></img>
+            />
             <ImageListItemBar title={author} />
         </>
     )

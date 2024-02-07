@@ -25,10 +25,7 @@ export function ImageGallery({ images, links }: ImageListResponse) {
                 {images?.map((image) => (
                     <ImageListItem key={image.id}>
                         <Link to={`/image-editor?imageId=${image.id}`}>
-                            <ImageItem
-                                id={image.id}
-                                author={image.author}
-                            ></ImageItem>
+                            <ImageItem id={image.id} author={image.author} />
                         </Link>
                     </ImageListItem>
                 ))}
