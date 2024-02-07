@@ -15,6 +15,7 @@ const SizeContainer = styled.div`
 
 const Label = styled.div`
     margin-bottom: 20px;
+    color: grey;
 `
 
 type ControlPanelProps = {
