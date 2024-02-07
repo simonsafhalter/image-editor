@@ -1,7 +1,6 @@
 // Constants
-const STORAGE_TYPE = 'sessionStorage'
-
 // Switch between 'sessionStorage' or 'localStorage' if needed.
+const STORAGE_TYPE = 'sessionStorage'
 // const STORAGE_TYPE = 'localStorage'
 
 /**

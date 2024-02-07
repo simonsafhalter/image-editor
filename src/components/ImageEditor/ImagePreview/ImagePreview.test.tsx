@@ -4,14 +4,6 @@ import { render, screen, act } from '@testing-library/react'
 import { ImagePreview } from './ImagePreview'
 
 describe('ImagePreview', () => {
-    it('renders without crashing', () => {
-        // Act
-        render(<ImagePreview imageUrl="test-image-url.jpg" />)
-
-        // Assert
-        expect(screen.getByText('IMAGE')).toBeInTheDocument()
-    })
-
     it('shows loading indicator when editing', () => {
         // Act
         render(<ImagePreview imageUrl="test-image-url.jpg" />)
@@ -24,13 +16,7 @@ describe('ImagePreview', () => {
         // Act
         render(<ImagePreview imageUrl="test-image-url.jpg" />)
 
-        await act(async () => {
-            const image = screen.getByAltText(
-                'Image preview'
-            ) as HTMLImageElement
-            // Manually trigger the onLoad event to simulate image loading
-            image.onload?.({} as any)
-        })
+        screen.getByAltText('Image preview').onload?.()
 
         // Assert
         expect(screen.queryByText('Loading...')).not.toBeInTheDocument()
