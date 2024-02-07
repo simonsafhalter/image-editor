@@ -42,18 +42,15 @@ type ImageEditorProps = {
  * @returns {JSX.Element} A React component that renders the image editing interface.
  */
 export function ImageEditor({ imageId }: ImageEditorProps) {
-    // Initialize storage key and image url.
+    // Initialize storage and image states
     const storageKey = `ImageEditor_${imageId}`
-    const [imageUrl, setImageUrl] = useState('')
-
-    // Initialize state from the storage or default values
     const [settings, setSettings] = useStoredState(
         storageKey,
         EDITOR_DEFAULT_SETTINGS
     )
+    const [imageUrl, setImageUrl] = useState('')
 
     function handleSettingsChange(newSettings: ImageEditorSettings) {
-        // Store values to persist
         setSettings((previousSettings: ImageEditorSettings) => {
             return { ...previousSettings, ...newSettings }
         })
