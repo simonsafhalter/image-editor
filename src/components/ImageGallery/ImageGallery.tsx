@@ -8,7 +8,7 @@ import { Pagination } from './Pagination/Pagination'
  * Renders a gallery of images with pagination.
  * The component handles pagination through the `Pagination` component and updates the URL parameters accordingly.
  *
- * @returns {JSX.Element} A React component that displays a paginated gallery of images.
+ * @returns {JSX.Element} Component that displays a paginated gallery of images.
  */
 export function ImageGallery({ images, links }: ImageListResponse) {
     const [, setSearchParams] = useSearchParams()

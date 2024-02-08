@@ -16,7 +16,7 @@ type ImageDownloadButtonProps = {
  * showing a progress indicator during the download process.
  *
  * @param {string} imageUrl - The URL of the image to be downloaded.
- * @returns {JSX.Element} A React component that renders a button for downloading an image and a progress indicator.
+ * @returns {JSX.Element} Component that renders a button for downloading an image and a progress indicator.
  */
 export function ImageDownloadButton({
     downloadUrl,

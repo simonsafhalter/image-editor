@@ -40,7 +40,7 @@ type ImageEditorProps = {
  * The ImageEditor component allows users to apply various settings to an image and download the edited image.
  * The component updates the storage whenever the settings change.
  *
- * @returns {JSX.Element} A React component that renders the image editing interface.
+ * @returns {JSX.Element} Component that renders the image editing interface.
  */
 export function ImageEditor({ imageId }: ImageEditorProps) {
     // Initialize storage and image states

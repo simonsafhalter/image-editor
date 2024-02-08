@@ -5,15 +5,14 @@ import { ImageGallery } from '@/components/ImageGallery/ImageGallery'
 
 /**
  * Fetches a list of images based on the current page number obtained from the URL parameters.
- * Handles loading, error, and no images available states.
  *
- * @returns {JSX.Element} A React component that displays a paginated gallery of images.
+ * @returns {JSX.Element} 'ImageGallery' component that displays a gallery of images.
  */
 export function ImageGalleryPage() {
     const [searchParams] = useSearchParams()
     const pageNumber = searchParams.get('page') || '1'
 
-    // Get the images
+    // Get list of images
     const { data, error, isLoading } = useImageList(pageNumber)
 
     if (isLoading) {

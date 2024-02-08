@@ -4,14 +4,15 @@ import { useImageDetails } from '@/api/getImageDetails'
 import { ImageEditor } from '@/components/ImageEditor/ImageEditor'
 
 /**
- * Component that checks the existence of an image by the provided image ID.
+ * Component that checks the existence of an image for the provided image ID.
  *
- * @returns {JSX.Element} The `ImageEditor` component for editing the image if the image details are successfully fetched.
+ * @returns {JSX.Element} 'ImageEditor' component for editing the image.
  */
 export function ImageEditorPage() {
     const [searchParams] = useSearchParams()
     const imageId = searchParams.get('imageId') || ''
 
+    // Get image details
     const { data, error, isLoading } = useImageDetails(imageId)
 
     if (isLoading) {

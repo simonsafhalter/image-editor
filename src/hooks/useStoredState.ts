@@ -8,6 +8,7 @@ import { getFromStorage } from '@/utils/storage'
  * @param {string} key - The key under which the state is stored in the storage.
  * @param {unknown} defaultValue - The default value to use if the key does not exist in the storage.
  * @returns {[unknown, Function]} A stateful value, and a function to update it.
+ *
  * @example
  * const [value, setValue] = useStoredState('myKey', 'defaultValue');
  */

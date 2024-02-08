@@ -17,7 +17,7 @@ type SizeControlProps = {
  * @param {string} label - The label for the input field.
  * @param {number} value - The current value of the input field.
  * @param {Function} onSizeChange - The function to call when the value changes.
- * @returns {JSX.Element} A React component that renders a controlled input field for size adjustments.
+ * @returns {JSX.Element} Component that renders a controlled input field for size adjustments.
  */
 export function SizeControl({ label, value, onSizeChange }: SizeControlProps) {
     // Correct to MAX_SIZE if user entered more than allowed.

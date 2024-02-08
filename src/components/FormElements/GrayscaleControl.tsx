@@ -20,7 +20,7 @@ type GrayscaleControlProps = {
  *
  * @param {boolean} grayscale - The current grayscale state (true for grayscale, false for normal).
  * @param {Function} onGrayscaleChange - The function to call when the grayscale state changes.
- * @returns {JSX.Element} A React component that renders a switch for toggling grayscale effect.
+ * @returns {JSX.Element} Component that renders a switch for toggling grayscale effect.
  */
 export function GrayscaleControl({
     grayscale,

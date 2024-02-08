@@ -29,7 +29,7 @@ export function useImageDetails(
     return useQuery({
         queryKey: ['imageDetails', url],
         queryFn: () => getImageDetails(url),
-        // Don't retry on 404 from Picsum
+        // Don't retry on 404 from Picsum. By default useQuery retries on every error.
         retry: (failureCount, error) => error.message !== '404',
     })
 }

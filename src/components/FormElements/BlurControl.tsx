@@ -22,7 +22,7 @@ type BlurControlProps = {
  *
  * @param {number} blur - The current blur level.
  * @param {Function} onBlurChange - The function to call when the blur level changes.
- * @returns {JSX.Element} A React component that renders a slider for adjusting blur level.
+ * @returns {JSX.Element} Component that renders a slider for adjusting blur level.
  */
 export function BlurControl({ blur, onBlurChange }: BlurControlProps) {
     return (

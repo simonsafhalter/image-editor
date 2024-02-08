@@ -14,13 +14,12 @@ type PaginationProps = {
 }
 
 /**
- * Represents pagination links and provides buttons to navigate through pages.
  * The component renders two buttons: one for navigating to the previous page and another for the next page.
  * Each button is enabled or disabled based on the availability of the corresponding link.
  *
  * @param {PaginationLinks} links - Object containing 'prev' and 'next' links for pagination.
  * @param {function} onPageChange - Callback function that is called with the URL of the new page when a pagination button is clicked.
- * @returns {JSX.Element} A React component that renders a group of buttons for pagination.
+ * @returns {JSX.Element} Component that renders a group of buttons for pagination.
  */
 export function Pagination({ links, onPageChange }: PaginationProps) {
     return (
