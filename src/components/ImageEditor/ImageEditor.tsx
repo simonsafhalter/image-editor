@@ -72,7 +72,10 @@ export function ImageEditor({ imageId }: ImageEditorProps) {
     return (
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2 }}>
             <Grid item xs={12} sm={7}>
-                <ImagePreview imageUrl={imageUrl} />
+                <StyledPaper>
+                    <h3>IMAGE</h3>
+                    <ImagePreview key={imageUrl} imageUrl={imageUrl} />
+                </StyledPaper>
             </Grid>
             <Grid item xs={12} sm={5}>
                 <StyledPaper>

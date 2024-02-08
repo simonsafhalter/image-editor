@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { CircularProgress, Paper } from '@mui/material'
+import { useState } from 'react'
+import { CircularProgress } from '@mui/material'
 import styled from '@emotion/styled'
 
 // Styles
@@ -15,10 +15,6 @@ const StyledImage = styled.img`
     object-fit: contain;
 `
 
-const StyledPaper = styled(Paper)({
-    padding: '20px',
-})
-
 // Types
 type ImagePreviewProps = {
     imageUrl: string
@@ -27,17 +23,11 @@ type ImagePreviewProps = {
 export function ImagePreview({ imageUrl }: ImagePreviewProps) {
     const [isEditing, setIsEditing] = useState(true)
 
-    useEffect(() => {
-        setIsEditing(true)
-    }, [imageUrl])
-
     return (
-        <StyledPaper>
-            <h3>IMAGE</h3>
+        <>
             {isEditing && <CircularProgress />}
             <ImageContainer>
                 <StyledImage
-                    key={imageUrl} // Forces to re-render because onLoad doesn't fire for a cached image (https://stackoverflow.com/questions/67969732/onload-doesnt-fire-on-cached-images)
                     src={imageUrl}
                     id="image-element"
                     onLoad={() => setIsEditing(false)}
@@ -45,6 +35,6 @@ export function ImagePreview({ imageUrl }: ImagePreviewProps) {
                     alt="Image preview"
                 />
             </ImageContainer>
-        </StyledPaper>
+        </>
     )
 }
